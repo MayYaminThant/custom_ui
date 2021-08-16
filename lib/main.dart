@@ -11,10 +11,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primaryColor: Colors.white,
-        // accentColor: Colors.cyan[600],
+        primarySwatch: Colors.blueGrey,
       ),
       home: MyHomePage(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -25,7 +25,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -38,16 +37,51 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
+AppBar get appBar => AppBar();
+
 Widget body(BuildContext context) {
   return Center(
-    child: stackBtn(
-      context,
-      'ABOUT',
-      Colors.white,
-      Colors.orange,
-      Colors.black,
+    child: Container(
+      margin: EdgeInsets.all(5),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.black,
+      ),
+      child: Row(
+        children: [
+          stackBtn(
+            context,
+            'ABOUT US',
+            Colors.white,
+            Colors.red,
+            Colors.black,
+          ),
+          divider,
+          stackBtn(
+            context,
+            'PRODUCTS',
+            Colors.white,
+            Colors.grey,
+            Colors.black,
+          ),
+          divider,
+          stackBtn(
+            context,
+            'NEWS',
+            Colors.white,
+            Colors.grey,
+            Colors.black,
+          ),
+          divider,
+          stackBtn(
+            context,
+            'CONTACT',
+            Colors.white,
+            Colors.grey,
+            Colors.black,
+          ),
+        ],
+      ),
     ),
   );
 }
-
-AppBar get appBar => AppBar();
