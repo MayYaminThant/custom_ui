@@ -1,4 +1,5 @@
-import 'package:custom_nav_bar/controller/custom_tab_controller.dart';
+import '../common/custom_style.dart';
+import '../controller/custom_tab_controller.dart';
 
 import '../common/body_custom_UI.dart';
 import 'package:provider/provider.dart';
@@ -68,63 +69,71 @@ Widget useBodyCustomUI(BuildContext context, CustomTabController controller) {
     StackBtn(
       context: context,
       text: 'ABOUT US',
-      textColor: Colors.white,
-      indicatorColor: getIndicatiorColor(0, controller.index),
-      containerColor: Colors.black,
+      isSelected: 0 == controller.index,
       onTab: () {
         controller.index = 0;
         controller.icon = Icons.warning_rounded;
       },
+      style: CustomStyle(
+        textColor: Colors.white,
+        indicatorColor: Colors.grey,
+        selectedIndicatorColor: Colors.blue,
+        backgroundColor: Colors.black,
+      ),
     ),
-    divider,
     StackBtn(
       context: context,
       text: 'PRODUCTS',
-      textColor: Colors.white,
-      indicatorColor: getIndicatiorColor(1, controller.index),
-      containerColor: Colors.black,
+      isSelected: 1 == controller.index,
       onTab: () {
         controller.index = 1;
         controller.icon = Icons.access_alarm;
       },
+      style: CustomStyle(
+        textColor: Colors.white,
+        indicatorColor: Colors.grey,
+        selectedIndicatorColor: Colors.blue,
+        backgroundColor: Colors.black,
+      ),
     ),
-    divider,
     StackBtn(
       context: context,
       text: 'NEWS',
-      textColor: Colors.white,
-      indicatorColor: getIndicatiorColor(2, controller.index),
-      containerColor: Colors.black,
+      isSelected: 2 == controller.index,
       onTab: () {
         controller.index = 2;
         controller.icon = Icons.home;
       },
+      style: CustomStyle(
+        textColor: Colors.white,
+        indicatorColor: Colors.grey,
+        selectedIndicatorColor: Colors.blue,
+        backgroundColor: Colors.black,
+      ),
     ),
-    divider,
     StackBtn(
       context: context,
       text: 'CONTACT',
-      textColor: Colors.white,
-      indicatorColor: getIndicatiorColor(3, controller.index),
-      containerColor: Colors.black,
+      isSelected: 3 == controller.index,
       onTab: () {
         controller.index = 3;
         controller.icon = Icons.contact_page_rounded;
       },
+      style: CustomStyle(
+        textColor: Colors.white,
+        indicatorColor: Colors.grey,
+        selectedIndicatorColor: Colors.blue,
+        backgroundColor: Colors.black,
+      ),
     ),
   ];
 
   return BodyCustomUI(
-    children: children,
-    listDirection: ListDirection.ROW,
-    margin: EdgeInsets.all(5),
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(10),
-      color: Colors.black,
-    ),
-  );
-}
-
-Color getIndicatiorColor(int lstIndex, int crlIndex) {
-  return lstIndex == crlIndex ? Colors.blue : Colors.grey;
+      children: children,
+      listDirection: ListDirection.ROW,
+      isWithDivider: true,
+      style: CustomStyle(
+        borderRadius: BorderRadius.circular(10),
+        margin: EdgeInsets.all(5),
+      ));
 }

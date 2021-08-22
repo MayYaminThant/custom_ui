@@ -1,3 +1,4 @@
+import '../common/custom_style.dart';
 import '../util/screen_size_util.dart';
 import 'package:flutter/material.dart';
 
@@ -12,16 +13,15 @@ class StackBtn extends StatelessWidget {
   StackBtn({
     required this.context,
     required this.text,
-    this.textColor,
-    this.indicatorColor,
-    this.containerColor, this.onTab,
+    required this.isSelected,
+    this.onTab,
+    this.style,
   });
   final BuildContext context;
   final String text;
-  final Color? textColor;
-  final Color? indicatorColor;
-  final Color? containerColor;
   final Function()? onTab;
+  final CustomStyle? style;
+  final bool isSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class StackBtn extends StatelessWidget {
             child: Container(
               height: 50,
               width: containerWidth,
-              child: Center(child: _text(text, textColor)),
+              child: Center(child: _text(text, style!.textColor)),
             ),
           ),
           Positioned(
@@ -47,7 +47,9 @@ class StackBtn extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
-                color: indicatorColor,
+                color: this.isSelected
+                    ? style!.selectedIndicatorColor
+                    : style!.indicatorColor,
               ),
               width: indicatorWidth,
               height: 10,
@@ -58,9 +60,3 @@ class StackBtn extends StatelessWidget {
     );
   }
 }
-
-Container get divider => Container(
-      width: 0.2,
-      height: 35,
-      color: Colors.white,
-    );
